@@ -7,7 +7,8 @@ import { Nunito } from "next/font/google";
 
 const nunito = Nunito({ subsets: ["latin"], weight: ["900"] });
 
-const videos = Array.from({ length: 4 }, (_, i) => `/vid${i + 1}.mp4`);
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const videos = Array.from({ length: 4 }, (_, i) => `${basePath}/vid${i + 1}.mp4`);
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
