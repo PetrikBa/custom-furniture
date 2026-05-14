@@ -35,7 +35,7 @@ export default function About() {
             className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-stone-100"
           >
             <Image
-              src="/workshop.jpg"
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/workshop.jpg`}
               alt="Our workshop"
               fill
               className="object-cover"

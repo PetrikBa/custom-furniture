@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 
-const images = [1, 2, 3, 4, 5, 6].map((n) => ({ src: `/ref${n}.jpg`, alt: `Reference ${n}` }));
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const images = [1, 2, 3, 4, 5, 6].map((n) => ({ src: `${basePath}/ref${n}.jpg`, alt: `Reference ${n}` }));
 
 export default function Gallery() {
   return (
