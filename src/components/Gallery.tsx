@@ -1,9 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 
-// Sem neskôr nahraď skutočnými obrázkami v public/gallery/
-const placeholders = [1, 2, 3, 4, 5, 6];
+const images = [1, 2, 3, 4, 5, 6].map((n) => ({ src: `/ref${n}.jpg`, alt: `Reference ${n}` }));
 
 export default function Gallery() {
   return (
@@ -21,17 +21,23 @@ export default function Gallery() {
         </motion.div>
 
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-          {placeholders.map((n, i) => (
+          {images.map((img, i) => (
             <motion.div
-              key={n}
+              key={img.src}
               initial={{ opacity: 0, scale: 0.96 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="aspect-square rounded-xl overflow-hidden bg-stone-100 flex items-center justify-center text-stone-400 text-sm"
+              className="relative aspect-square rounded-xl overflow-hidden bg-stone-100"
             >
-              {/* Nahraď: <Image src={`/gallery/${n}.jpg`} alt="Realizácia" fill className="object-cover" /> */}
-              [ Photo {n} ]
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 50vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-[#1A202C] opacity-20" />
             </motion.div>
           ))}
         </div>

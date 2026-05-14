@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 
 export default function About() {
@@ -17,13 +18,12 @@ export default function About() {
               About Us
             </h2>
             <p className="text-stone-600 text-lg leading-relaxed mb-4">
-              We are a family business with over 10 years of tradition in crafting bespoke furniture.
-              Every project is a challenge to create something unique that fits perfectly
-              into your home.
+              We are a family business in crafting bespoke furniture. Every project is a challenge 
+              to create something unique that fits perfectly into your apartment.
             </p>
             <p className="text-stone-600 text-lg leading-relaxed">
-              We use quality materials, pay attention to detail, and guarantee the satisfaction
-              of every customer. Our workshop is based in Sofia, with delivery across Bulgaria.
+              <span className="font-semibold text-stone-900">Delivered and installed in record time.</span> We use quality materials, pay attention to 
+              detail, and guarantee the satisfaction of every customer.
             </p>
           </motion.div>
 
@@ -34,10 +34,14 @@ export default function About() {
             transition={{ duration: 0.7 }}
             className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-stone-100"
           >
-            {/* Sem vlož svoju fotku dielne — nahraď placeholder */}
-            <div className="absolute inset-0 flex items-center justify-center text-stone-400 text-sm">
-              [ Workshop photo ]
-            </div>
+            <Image
+              src="/workshop.jpg"
+              alt="Our workshop"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-[#1A202C] opacity-25 rounded-2xl" />
           </motion.div>
         </div>
       </div>
