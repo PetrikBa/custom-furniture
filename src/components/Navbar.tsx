@@ -19,6 +19,7 @@ export default function Navbar() {
   const [active, setActive] = useState("#home");
   const [menuOpen, setMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [themeLoaded, setThemeLoaded] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
   const closeMenu = () => setMenuOpen(false);
@@ -37,6 +38,22 @@ export default function Navbar() {
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = savedTheme ? savedTheme === "dark" : prefersDark;
+
+    setDarkMode(isDark);
+    document.documentElement.classList.toggle("dark", isDark);
+    setThemeLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (!themeLoaded) return;
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+    document.documentElement.classList.toggle("dark", darkMode);
+  }, [darkMode, themeLoaded]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -66,8 +83,7 @@ export default function Navbar() {
   };
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    document.documentElement.classList.toggle("dark", !darkMode);
+    setDarkMode((prev) => !prev);
   };
 
   const headerClass = `fixed py-2 top-0 left-0 right-0 z-50 transition-all duration-25 ${
