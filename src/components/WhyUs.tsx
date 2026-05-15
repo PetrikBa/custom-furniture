@@ -12,7 +12,7 @@ const reasons = [
 
 export default function WhyUs() {
   return (
-    <section className="py-24 bg-stone-900 text-white">
+    <section id="why-us" className="py-24 bg-stone-900 text-white">
       <div className="mx-auto max-w-6xl px-4 text-center">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -24,7 +24,7 @@ export default function WhyUs() {
           <Badge variant="outline" className="text-white border-white/30 mb-4">
             Why Us
           </Badge>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl no-dark-color">
             Quality you can trust
           </h2>
         </motion.div>
