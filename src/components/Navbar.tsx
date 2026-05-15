@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Sofa, Menu, X, Moon } from "lucide-react";
 import { Nunito } from "next/font/google";
@@ -19,6 +19,7 @@ export default function Navbar() {
   const [active, setActive] = useState("#home");
   const [menuOpen, setMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -36,6 +37,25 @@ export default function Navbar() {
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const handleOutsideClick = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Node;
+      if (!headerRef.current?.contains(target)) {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("touchstart", handleOutsideClick, { passive: true });
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("touchstart", handleOutsideClick);
+    };
+  }, [menuOpen]);
 
   const scrollTo = (href: string) => {
     href === "#home"
@@ -83,7 +103,7 @@ export default function Navbar() {
   }`;
 
   return (
-    <header className={headerClass}>
+    <header ref={headerRef} className={headerClass}>
       <div className="mx-auto max-w-6xl px-8 h-16 flex items-center justify-between gap-4 flex-nowrap">
         <span
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
