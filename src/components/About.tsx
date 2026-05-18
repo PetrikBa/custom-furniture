@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 export default function About() {
   return (
-    <section id="about" className="py-24 bg-white">
+    <section id="about" className="py-24 bg-white dark:bg-stone-900">
       <div className="mx-auto max-w-6xl px-4">
         <div className="grid gap-12 md:grid-cols-2 items-center">
           <motion.div
@@ -14,10 +14,10 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-stone-900 dark:text-white">
               About Us
             </h2>
-            <p className="text-stone-600 text-lg leading-relaxed mb-4">
+            <p className="text-stone-600 dark:text-stone-400 text-lg leading-relaxed mb-4">
               We are a family business in crafting bespoke furniture. Every project is a challenge 
               to create something unique that fits perfectly into your apartment.
             </p>

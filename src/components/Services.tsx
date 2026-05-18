@@ -27,7 +27,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 bg-stone-50">
+    <section id="services" className="py-24 bg-stone-50 dark:bg-stone-900">
       <div className="mx-auto max-w-4xl px-4">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -36,8 +36,8 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Our Services</h2>
-          <p className="mt-4 text-stone-500 text-lg">From design to installation — everything under one roof.</p>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-stone-900 dark:text-white">Our Services</h2>
+          <p className="mt-4 text-stone-500 dark:text-stone-400 text-lg">From design to installation — everything under one roof.</p>
         </motion.div>
 
         <div className="grid gap-6 sm:gap-12 xl:gap-8 sm:grid-cols-2 xl:grid-cols-4">
@@ -48,11 +48,11 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="service-card rounded-2xl bg-white p-5 shadow-sm border border-stone-100 flex flex-col items-center text-center"
+              className="service-card rounded-2xl bg-white dark:bg-stone-800 p-5 shadow-sm border border-stone-100 dark:border-stone-700 flex flex-col items-center text-center"
             >
               <span className="text-4xl mb-3">{service.icon}</span>
-              <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
-              <p className="text-stone-500 leading-relaxed">{service.description}</p>
+              <h3 className="text-lg font-semibold mb-2 text-stone-900 dark:text-white">{service.title}</h3>
+              <p className="text-stone-500 dark:text-stone-400 leading-relaxed">{service.description}</p>
             </motion.div>
           ))}
         </div>

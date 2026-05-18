@@ -88,32 +88,18 @@ export default function Navbar() {
 
   const headerClass = `fixed py-2 top-0 left-0 right-0 z-50 transition-all duration-25 ${
     scrolled || menuOpen
-      ? darkMode
-        ? "bg-stone-900 text-white"
-        : "bg-white/100 backdrop-blur shadow-sm"
-      : darkMode
-      ? "bg-stone-800 text-white"
-      : "bg-transparent dark:bg-stone-900"
+      ? "bg-white/100 backdrop-blur shadow-sm dark:bg-stone-900"
+      : "bg-transparent dark:bg-stone-800"
   }`;
 
   const linkClass = (href: string) => `text-sm font-medium transition-colors cursor-pointer relative ${
     scrolled
-      ? darkMode
-        ? "text-white hover:text-gray-300"
-        : "text-stone-600 hover:text-stone-900"
-      : darkMode
-      ? "text-gray-300 hover:text-white"
+      ? "text-stone-600 hover:text-stone-900 dark:text-white dark:hover:text-gray-300"
       : "text-white/80 hover:text-white"
   } ${
     active === href
       ? `after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-0.5 ${
-          scrolled
-            ? darkMode
-              ? "after:bg-white"
-              : "after:bg-stone-900"
-            : darkMode
-            ? "after:bg-white"
-            : "after:bg-white"
+          scrolled ? "after:bg-stone-900 dark:after:bg-white" : "after:bg-white"
         }`
       : ""
   }`;
@@ -124,13 +110,7 @@ export default function Navbar() {
         <span
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className={`${nunito.className} flex items-center gap-2 text-xl cursor-pointer whitespace-nowrap shrink-0 ${
-            scrolled || menuOpen
-              ? darkMode
-                ? "text-white"
-                : "text-stone-900"
-              : darkMode
-              ? "text-white"
-              : "text-white"
+            scrolled || menuOpen ? "text-stone-900 dark:text-white" : "text-white"
           }`}
         >
           <Sofa className="w-6 h-6" />
@@ -152,7 +132,7 @@ export default function Navbar() {
             onClick={toggleDarkMode}
             variant="ghost"
             className={`cursor-pointer rounded-full ${
-              darkMode ? "text-white hover:bg-white/10" : scrolled ? "text-stone-700 hover:bg-stone-100" : "text-white hover:bg-white/15"
+              scrolled ? "text-stone-700 hover:bg-stone-100 dark:text-white dark:hover:bg-white/10" : "text-white hover:bg-white/15"
             }`}
             aria-label="Toggle Dark Mode"
           >
@@ -164,15 +144,9 @@ export default function Navbar() {
             className={`cursor-pointer transition-all ${
               active === "#contact"
                 ? scrolled
-                  ? darkMode
-                    ? "bg-white text-black hover:bg-gray-300"
-                    : "bg-stone-900 text-white hover:bg-stone-800"
-                  : darkMode
-                  ? "bg-white text-black ring-2 ring-white"
+                  ? "bg-stone-900 text-white hover:bg-stone-800 dark:bg-white dark:text-black dark:hover:bg-gray-300"
                   : "bg-white text-black ring-2 ring-white"
-                : darkMode
-                ? "bg-gray-800 text-white hover:bg-gray-700"
-                : "bg-white text-black hover:bg-white/90"
+                : "bg-white text-black hover:bg-white/90 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
             }`}
           >
             Contact
@@ -182,13 +156,7 @@ export default function Navbar() {
         {/* Hamburger button */}
         <button
           className={`md:hidden p-2 rounded-md transition-colors ${
-            scrolled || menuOpen
-              ? darkMode
-                ? "text-white"
-                : "text-stone-900"
-              : darkMode
-              ? "text-white"
-              : "text-white"
+            scrolled || menuOpen ? "text-stone-900 dark:text-white" : "text-white"
           }`}
           onClick={() => setMenuOpen((o) => !o)}
           aria-label="Toggle menu"
@@ -199,23 +167,15 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className={`md:hidden px-8 py-4 flex flex-col gap-4 border-t transition-colors ${
-          darkMode
-            ? "bg-stone-900 text-white border-stone-700"
-            : "bg-white/95 text-stone-600 border-stone-100"
-        }`}>
+        <div className="md:hidden px-8 py-4 flex flex-col gap-4 border-t transition-colors bg-white/95 text-stone-600 border-stone-100 dark:bg-stone-900 dark:text-white dark:border-stone-700">
           {links.map((link) => (
             <button
               key={link.href}
               onClick={() => scrollTo(link.href)}
               className={`text-left text-sm font-medium py-1 transition-colors cursor-pointer ${
                 active === link.href
-                  ? darkMode
-                    ? "text-white font-bold"
-                    : "text-stone-900 font-bold"
-                  : darkMode
-                  ? "text-gray-300 hover:text-white"
-                  : "text-stone-600 hover:text-stone-900"
+                  ? "text-stone-900 font-bold dark:text-white"
+                  : "text-stone-600 hover:text-stone-900 dark:text-gray-300 dark:hover:text-white"
               }`}
             >
               {link.label}
@@ -225,7 +185,7 @@ export default function Navbar() {
             size="sm"
             variant="ghost"
             onClick={toggleDarkMode}
-            className={`self-start cursor-pointer ${darkMode ? "text-white hover:bg-white/10" : "text-stone-700 hover:bg-stone-100"}`}
+            className="self-start cursor-pointer text-stone-700 hover:bg-stone-100 dark:text-white dark:hover:bg-white/10"
             aria-label="Toggle Dark Mode"
           >
             <Moon className="w-4 h-4 mr-2" />
@@ -236,12 +196,8 @@ export default function Navbar() {
             onClick={() => scrollTo("#contact")}
             className={`self-start cursor-pointer transition-all ${
               active === "#contact"
-                ? darkMode
-                  ? "bg-white text-black hover:bg-gray-300"
-                  : "bg-stone-900 text-white hover:bg-stone-800"
-                : darkMode
-                ? "bg-gray-800 text-white hover:bg-gray-700"
-                : "bg-stone-900 text-white hover:bg-stone-800"
+                ? "bg-stone-900 text-white hover:bg-stone-800 dark:bg-white dark:text-black dark:hover:bg-gray-300"
+                : "bg-stone-900 text-white hover:bg-stone-800 dark:bg-gray-800 dark:hover:bg-gray-700"
             }`}
           >
             Contact

@@ -42,7 +42,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className={`${nunito.className} w-[50vw] mb-4 font-black tracking-tight leading-tight max-w-xl no-dark-color`}
+            className={`${nunito.className} w-[50vw] mb-4 font-black tracking-tight leading-tight max-w-xl`}
             style={{ fontSize: "clamp(1.75rem, 5vmin, 4.5rem)" }}
           >
             Custom furniture designs created and installed
@@ -52,7 +52,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-8 max-w-lg text-sm text-white/80 sm:text-base no-dark-color"
+            className="mb-8 max-w-lg text-sm text-white/80 sm:text-base"
           >
             Custom furniture tailored to your space. We handle everything from design to professional installation, ensuring premium quality and a seamless fit for your perfect home.
           </motion.p>

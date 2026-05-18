@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label";
 
 const schema = z.object({
   name: z.string().min(1, "Name is required").min(2, "Name must be at least 2 characters"),
-  email: z.string().min(1, "Email is required").email("Invalid e-mail"),
+  email: z.email("Invalid e-mail"),
   phone: z.string().optional().or(z.literal("")),
   message: z.string().min(1, "Message is required").min(10, "Message must be at least 10 characters"),
 });

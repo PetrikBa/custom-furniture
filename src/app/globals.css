@@ -85,19 +85,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-/* Update dark mode styles to only change heading colors */
-:root {
-  --heading-color: #000000;
-}
 
-.dark {
-  --heading-color: #ffffff;
-}
-
-h1, h2, h3, h4, h5, h6, p {
-  color: var(--heading-color);
-  transition: color 0.3s;
-}
 
 footer p,
 footer h1,
