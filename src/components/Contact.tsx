@@ -150,7 +150,7 @@ export default function Contact() {
         {/* Kontaktné údaje */}
         <div className="mt-10 flex flex-col sm:flex-row gap-6 justify-center text-center text-stone-500 dark:text-stone-400 text-sm">
           <span>📞 +421 904 232 384</span>
-          <span>✉️ info@custom-furniture.bg</span>
+          <span>✉️ petri.baca@gmail.com</span>
           <span>📍 Byala, Bulgaria</span>
         </div>
       </div>
