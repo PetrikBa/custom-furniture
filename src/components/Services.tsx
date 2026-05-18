@@ -48,7 +48,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="rounded-2xl bg-white p-5 shadow-sm border border-stone-100 flex flex-col items-center text-center"
+              className="service-card rounded-2xl bg-white p-5 shadow-sm border border-stone-100 flex flex-col items-center text-center"
             >
               <span className="text-4xl mb-3">{service.icon}</span>
               <h3 className="text-lg font-semibold mb-2">{service.title}</h3>

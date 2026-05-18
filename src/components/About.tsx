@@ -21,8 +21,8 @@ export default function About() {
               We are a family business in crafting bespoke furniture. Every project is a challenge 
               to create something unique that fits perfectly into your apartment.
             </p>
-            <p className="text-stone-600 text-lg leading-relaxed">
-              <span className="font-semibold text-stone-900">Delivered and installed in record time.</span> We use quality materials, pay attention to 
+            <p className="text-stone-600 dark:text-stone-300 text-lg leading-relaxed">
+              <span className="font-semibold text-stone-900 dark:text-white">Delivered and installed in record time.</span> We use quality materials, pay attention to 
               detail, and guarantee the satisfaction of every customer.
             </p>
           </motion.div>
@@ -32,7 +32,7 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-stone-100"
+            className="relative aspect-4/3 rounded-2xl overflow-hidden bg-stone-100"
           >
             <Image
               src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/workshop.jpg`}
